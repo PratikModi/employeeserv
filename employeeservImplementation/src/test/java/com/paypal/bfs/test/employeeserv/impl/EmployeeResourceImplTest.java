@@ -103,7 +103,6 @@ public class EmployeeResourceImplTest {
         MvcResult mvcResult = mvc.perform(MockMvcRequestBuilders.post(uri).content(content)
                 .contentType(MediaType.APPLICATION_JSON_UTF8_VALUE)).andReturn();
         int status = mvcResult.getResponse().getStatus();
-        System.out.println(mvcResult.getResponse().getContentAsString());
         Assert.assertEquals(201, status);
         Employee employee = mapFromJson(content, Employee.class);
         Assert.assertEquals("ABC",employee.getFirstName());

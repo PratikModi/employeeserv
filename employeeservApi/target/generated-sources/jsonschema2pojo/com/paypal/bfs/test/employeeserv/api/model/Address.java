@@ -23,7 +23,7 @@ import com.fasterxml.jackson.annotation.JsonPropertyOrder;
     "city",
     "state",
     "country",
-    "zip_code"
+    "zipCode"
 })
 public class Address {
 
@@ -71,7 +71,7 @@ public class Address {
      * (Required)
      * 
      */
-    @JsonProperty("zip_code")
+    @JsonProperty("zipCode")
     @JsonPropertyDescription("zip code")
     private String zipCode;
     @JsonIgnore
@@ -180,7 +180,7 @@ public class Address {
      * (Required)
      * 
      */
-    @JsonProperty("zip_code")
+    @JsonProperty("zipCode")
     public String getZipCode() {
         return zipCode;
     }
@@ -190,7 +190,7 @@ public class Address {
      * (Required)
      * 
      */
-    @JsonProperty("zip_code")
+    @JsonProperty("zipCode")
     public void setZipCode(String zipCode) {
         this.zipCode = zipCode;
     }

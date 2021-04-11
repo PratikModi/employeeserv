@@ -60,7 +60,7 @@
           "minLength": 1,
           "maxLength": 255
         },
-        "zip_code": {
+        "zipCode": {
           "description": "zip code",
           "type": "string",
           "minLength": 1,
@@ -72,7 +72,7 @@
         "city",
         "state",
         "country",
-        "zip_code"
+        "zipCode"
       ]
     }
   },

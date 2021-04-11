@@ -5,6 +5,7 @@ import com.paypal.bfs.test.employeeserv.api.model.Employee;
 import com.paypal.bfs.test.employeeserv.service.IEmployeeService;
 import com.paypal.bfs.test.employeeserv.validate.RequestValidator;
 import com.paypal.bfs.test.employeeserv.validate.ValidationError;
+import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -22,6 +23,7 @@ import java.util.Optional;
  * Implementation class for employee resource.
  */
 @RestController
+@Slf4j
 public class EmployeeResourceImpl implements EmployeeResource {
 
     private IEmployeeService employeeService;
@@ -49,13 +51,12 @@ public class EmployeeResourceImpl implements EmployeeResource {
                 return ResponseEntity.status(HttpStatus.BAD_REQUEST).body(errors);
             }
             employee = employeeService.saveEmployee(newEmployee);
-            System.out.println(employee);
             UriComponents uriComponents =
                     ucBuilder.path("/v1/bfs/employees/{id}").buildAndExpand(employee.get().getId());
             URI location = uriComponents.toUri();
             return ResponseEntity.created(location).body(employee);
         }catch (Exception e){
-            e.printStackTrace();
+            log.error("Error while creating employee",e);
             return ResponseEntity.status(HttpStatus.INTERNAL_SERVER_ERROR).body(e.getMessage());
         }
 
