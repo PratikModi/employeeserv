@@ -3,6 +3,9 @@ package com.paypal.bfs.test.employeeserv.api.model;
 
 import java.util.HashMap;
 import java.util.Map;
+import javax.validation.Valid;
+import javax.validation.constraints.NotNull;
+import javax.validation.constraints.Size;
 import com.fasterxml.jackson.annotation.JsonAnyGetter;
 import com.fasterxml.jackson.annotation.JsonAnySetter;
 import com.fasterxml.jackson.annotation.JsonIgnore;
@@ -42,6 +45,8 @@ public class Employee {
      */
     @JsonProperty("first_name")
     @JsonPropertyDescription("first name")
+    @Size(min = 1, max = 255)
+    @NotNull
     private String firstName;
     /**
      * last name
@@ -50,13 +55,18 @@ public class Employee {
      */
     @JsonProperty("last_name")
     @JsonPropertyDescription("last name")
+    @Size(min = 1, max = 255)
+    @NotNull
     private String lastName;
     /**
      * date of birth
+     * (Required)
      * 
      */
     @JsonProperty("date_of_birth")
     @JsonPropertyDescription("date of birth")
+    @Size(min = 10, max = 10)
+    @NotNull
     private String dateOfBirth;
     /**
      * address
@@ -64,8 +74,10 @@ public class Employee {
      */
     @JsonProperty("address")
     @JsonPropertyDescription("address")
+    @Valid
     private Address address;
     @JsonIgnore
+    @Valid
     private Map<String, Object> additionalProperties = new HashMap<String, Object>();
 
     /**
@@ -128,6 +140,7 @@ public class Employee {
 
     /**
      * date of birth
+     * (Required)
      * 
      */
     @JsonProperty("date_of_birth")
@@ -137,6 +150,7 @@ public class Employee {
 
     /**
      * date of birth
+     * (Required)
      * 
      */
     @JsonProperty("date_of_birth")

@@ -3,6 +3,9 @@ package com.paypal.bfs.test.employeeserv.api.model;
 
 import java.util.HashMap;
 import java.util.Map;
+import javax.validation.Valid;
+import javax.validation.constraints.NotNull;
+import javax.validation.constraints.Size;
 import com.fasterxml.jackson.annotation.JsonAnyGetter;
 import com.fasterxml.jackson.annotation.JsonAnySetter;
 import com.fasterxml.jackson.annotation.JsonIgnore;
@@ -34,6 +37,8 @@ public class Address {
      */
     @JsonProperty("line1")
     @JsonPropertyDescription("address line1")
+    @Size(min = 1, max = 255)
+    @NotNull
     private String line1;
     /**
      * address line2
@@ -41,6 +46,7 @@ public class Address {
      */
     @JsonProperty("line2")
     @JsonPropertyDescription("address line2")
+    @Size(min = 1, max = 255)
     private String line2;
     /**
      * city
@@ -49,6 +55,8 @@ public class Address {
      */
     @JsonProperty("city")
     @JsonPropertyDescription("city")
+    @Size(min = 1, max = 255)
+    @NotNull
     private String city;
     /**
      * state
@@ -57,6 +65,8 @@ public class Address {
      */
     @JsonProperty("state")
     @JsonPropertyDescription("state")
+    @Size(min = 1, max = 255)
+    @NotNull
     private String state;
     /**
      * country
@@ -65,6 +75,8 @@ public class Address {
      */
     @JsonProperty("country")
     @JsonPropertyDescription("country")
+    @Size(min = 1, max = 255)
+    @NotNull
     private String country;
     /**
      * zip code
@@ -73,8 +85,11 @@ public class Address {
      */
     @JsonProperty("zipCode")
     @JsonPropertyDescription("zip code")
+    @Size(min = 1, max = 10)
+    @NotNull
     private String zipCode;
     @JsonIgnore
+    @Valid
     private Map<String, Object> additionalProperties = new HashMap<String, Object>();
 
     /**
